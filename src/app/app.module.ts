@@ -10,7 +10,7 @@ import { UserComponent } from './user/user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatButtonModule } from "@angular/material/button";
-import { MatDialogModule } from "@angular/material/dialog";
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dialog";
 import { UserFormComponent } from './user-form/user-form.component';
 
 @NgModule({
@@ -29,7 +29,9 @@ import { UserFormComponent } from './user-form/user-form.component';
     MatButtonModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: true}}
+  ],
   bootstrap: [AppComponent],
   entryComponents: [UserFormComponent]
 })
