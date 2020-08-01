@@ -7,7 +7,7 @@
 
     <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
 
-      <h5 *ngIf="success">Your form is valid!</h5>
+      <h5 *ngIf="success" mat-dialog-close>Your form is valid!</h5>
 
       <label>
         <div>
@@ -36,8 +36,9 @@
 
       </label>
 
-      <input type="submit" value="CREATE USER" class="cta"/>
+      <input type="submit" value="CREATE USER" class="cta" />
 
+      <button mat-dialog-close>CANCEL</button>
     </form>
 
     <div *ngIf="submitted" class="results">

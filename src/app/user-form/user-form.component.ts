@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { UserDataService } from "../user-data.service";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-user-form',
@@ -15,7 +16,9 @@ export class UserFormComponent implements OnInit {
 
   userDataService: UserDataService;
 
-  constructor(private formBuilder: FormBuilder, private userService: UserDataService) {
+  matDialog: MatDialog;
+
+  constructor(private formBuilder: FormBuilder, private userService: UserDataService, private dialog: MatDialog) {
     this.messageForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -23,6 +26,8 @@ export class UserFormComponent implements OnInit {
     });
 
     this.userDataService = userService;
+
+    this.matDialog = dialog;
   }
 
   ngOnInit(): void {
@@ -35,8 +40,11 @@ export class UserFormComponent implements OnInit {
       return;
     }
 
-    this.userService.createUser(this.messageForm);
-    this.success = true;
+    if (this.messageForm.valid) {
+      this.userService.createUser(this.messageForm);
+      this.success = true;
+      this.matDialog.closeAll();
+    }
   }
 
 }

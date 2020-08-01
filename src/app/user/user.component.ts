@@ -17,6 +17,10 @@ export class UserComponent implements OnInit {
               private matDialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.loadUsers();
+  }
+
+  loadUsers() {
     this.userData.getUsers().subscribe( data => {
       this.users = data;
     })
