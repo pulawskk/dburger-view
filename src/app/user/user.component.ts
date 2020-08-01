@@ -40,6 +40,7 @@ export class UserComponent implements OnInit {
 
   deleteUser(id: number) {
     this.userData.deleteUser(id);
+    this.loadUsers();
   }
 
 }
