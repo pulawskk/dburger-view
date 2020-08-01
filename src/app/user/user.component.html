@@ -1,1 +1,22 @@
-<p>user works!</p>
+<h1>Users</h1>
+
+<table *ngIf="users">
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th>Orders</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+
+  <!--  users.users -> variable users contains users objects-->
+  <tr *ngFor="let user of users.users">
+    <td>{{user.firstName}}</td>
+    <td>{{user.lastName}}</td>
+    <td>{{user.email}}</td>
+    <td>placeholder for orders</td>
+    <td>placehodler for update</td>
+    <td>placehodler delete</td>
+  </tr>
+</table>
