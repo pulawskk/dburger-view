@@ -38,4 +38,8 @@ export class UserComponent implements OnInit {
     modalDialog.afterClosed().subscribe(() => this.loadUsers());
   }
 
+  deleteUser(id: number) {
+    this.userData.deleteUser(id);
+  }
+
 }

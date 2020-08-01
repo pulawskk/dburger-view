@@ -31,4 +31,8 @@ export class UserDataService {
       console.log(data);
     });
   }
+
+  deleteUser(id: number) {
+    this.http.delete(this.url + id).toPromise();
+  }
 }
