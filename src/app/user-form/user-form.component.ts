@@ -9,7 +9,21 @@ import { UserDataService } from "../user-data.service";
 })
 export class UserFormComponent implements OnInit {
 
-  constructor() { }
+  messageForm: FormGroup;
+  submitted: boolean = false;
+  success: boolean = false;
+
+  userDataService: UserDataService;
+
+  constructor(private formBuilder: FormBuilder, private userService: UserDataService) {
+    this.messageForm = this.formBuilder.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required]
+    });
+
+    this.userDataService = userService;
+  }
 
   ngOnInit(): void {
   }
