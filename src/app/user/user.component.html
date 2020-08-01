@@ -15,9 +15,15 @@
     <td>{{user.firstName}}</td>
     <td>{{user.lastName}}</td>
     <td>{{user.email}}</td>
-    <td>placeholder for orders</td>
-    <td>placehodler for update</td>
-    <td>placehodler delete</td>
+    <td>
+      <button mat-raised-button id="orders-user-btn" (click)="displayOrders()">ORDERS</button>
+    </td>
+    <td>
+      <button mat-raised-button id="update-user-btn" (click)="updateUser()">UPDATE</button>
+    </td>
+    <td>
+      <button mat-raised-button id="delete-user-btn" (click)="deleteUser()">DELETE</button>
+    </td>
   </tr>
 </table>
 
