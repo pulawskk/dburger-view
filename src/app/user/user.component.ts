@@ -35,6 +35,7 @@ export class UserComponent implements OnInit {
     dialogConfig.width = "650px";
 
     const modalDialog = this.matDialog.open(UserFormComponent, dialogConfig);
+    modalDialog.afterClosed().subscribe(() => this.loadUsers());
   }
 
 }
