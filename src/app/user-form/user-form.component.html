@@ -1,1 +1,58 @@
-<p>user-form works!</p>
+<div id="modal-content-wrapper">
+  <header id="modal-header">
+    <h1 id="modal-title">Create new user</h1>
+  </header>
+
+  <section id="modal-body">
+
+    <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+
+      <h5 *ngIf="success">Your form is valid!</h5>
+
+      <label>
+        <div>
+          First name:
+          <input type="text" formControlName="firstName">
+          <div *ngIf="submitted && messageForm.controls.firstName.errors" class="error">
+            <div *ngIf="messageForm.controls.firstName.errors.required">First name is required!</div>
+          </div>
+        </div>
+
+        <div>
+          Last name:
+          <input type="text" formControlName="lastName">
+          <div *ngIf="submitted && messageForm.controls.lastName.errors" class="error">
+            <div *ngIf="messageForm.controls.lastName.errors.required">Last name is required!</div>
+          </div>
+        </div>
+
+        <div>
+          Email:
+          <input type="text" formControlName="email">
+          <div *ngIf="submitted && messageForm.controls.email.errors" class="error">
+            <div *ngIf="messageForm.controls.email.errors.required">Email is required!</div>
+          </div>
+        </div>
+
+      </label>
+
+      <input type="submit" value="CREATE USER" class="cta"/>
+
+    </form>
+
+    <div *ngIf="submitted" class="results">
+
+      <strong>First name:</strong>
+      <span><pre> {{ messageForm.controls.firstName.value }}</pre></span>
+
+      <strong>Last name:</strong>
+      <span><pre> {{ messageForm.controls.lastName.value }}</pre></span>
+
+      <strong>Email:</strong>
+      <span><pre> {{ messageForm.controls.email.value }}</pre></span>
+
+    </div>
+
+  </section>
+
+</div>

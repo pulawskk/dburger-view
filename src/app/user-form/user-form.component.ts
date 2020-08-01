@@ -28,4 +28,15 @@ export class UserFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.messageForm.invalid) {
+      return;
+    }
+
+    this.userService.createUser(this.messageForm);
+    this.success = true;
+  }
+
 }
