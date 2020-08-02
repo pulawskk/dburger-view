@@ -16,7 +16,7 @@
     <td>{{user.lastName}}</td>
     <td>{{user.email}}</td>
     <td>
-      <button mat-raised-button id="orders-user-btn" (click)="displayOrders()">ORDERS</button>
+      <button mat-raised-button id="orders-user-btn" routerLink="/orders/{{user.id}}">ORDERS</button>
     </td>
     <td>
       <button mat-raised-button id="update-user-btn" (click)="openUserFormModalUpdate(user.id)">UPDATE</button>

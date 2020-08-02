@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {OrderDataService} from "../order-data.service";
+import { UserDataService} from "../user-data.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-order',
@@ -9,11 +11,23 @@ import {OrderDataService} from "../order-data.service";
 export class OrderComponent implements OnInit {
 
   orders: Object;
+  id: number;
 
-  constructor(private orderData: OrderDataService) { }
+  constructor(private orderData: OrderDataService,
+              private userData: UserDataService,
+              private router: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.loadOrders();
+    this.router.params.subscribe(data => {
+      this.id = data['id'];
+      console.log(this.id);
+    })
+
+    if(this.id > 0) {
+      this.loadOrdersForUserId(this.id);
+    } else if(this.id == null) {
+      this.loadOrders();
+    }
   }
 
   loadOrders() {
@@ -22,4 +36,10 @@ export class OrderComponent implements OnInit {
     })
   }
 
+  loadOrdersForUserId(id: number) {
+    this.userData.getOrdersForUserId(id).subscribe(data => {
+      this.orders = null;
+      this.orders = data;
+    });
+  }
 }

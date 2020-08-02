@@ -61,4 +61,8 @@ export class UserDataService {
       console.log(data);
     });
   }
+
+  getOrdersForUserId(id: number) {
+    return this.http.get(this.url + id + "/orders");
+  }
 }
