@@ -19,6 +19,7 @@ export class UserFormComponent implements OnInit {
   matDialog: MatDialog;
 
   userUpdateData = {
+    id: 0,
     firstName: '',
     lastName: '',
     email: ''
@@ -50,6 +51,12 @@ export class UserFormComponent implements OnInit {
 
     if (this.messageForm.invalid) {
       return;
+    }
+
+    if (this.messageForm.valid && this.userUpdateData.id > 0) {
+      this.userService.updateUser(this.messageForm, this.userUpdateData.id);
+      this.success = true;
+      this.matDialog.closeAll();
     }
 
     if (this.messageForm.valid) {

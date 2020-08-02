@@ -73,6 +73,7 @@ export class UserComponent implements OnInit {
     const modalDialog = this.matDialog.open(UserFormComponent, dialogConfig);
     const instance = modalDialog.componentInstance;
 
+    instance.userUpdateData.id = id;
     instance.userUpdateData.firstName = this.firstName;
     instance.userUpdateData.lastName = this.lastName;
     instance.userUpdateData.email = this.email;
