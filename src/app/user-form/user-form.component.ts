@@ -57,13 +57,10 @@ export class UserFormComponent implements OnInit {
       this.userService.updateUser(this.messageForm, this.userUpdateData.id);
       this.success = true;
       this.matDialog.closeAll();
-    }
-
-    if (this.messageForm.valid) {
+    } else if (this.messageForm.valid && this.userUpdateData.id == 0) {
       this.userService.createUser(this.messageForm);
       this.success = true;
       this.matDialog.closeAll();
     }
   }
-
 }
