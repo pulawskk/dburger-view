@@ -14,6 +14,10 @@ export class UserComponent implements OnInit {
   users: Object;
   user: Object;
 
+  firstName: string = '';
+  lastName: string = '';
+  email: string = '';
+
   constructor(private userData: UserDataService,
               private matDialog: MatDialog) { }
 
@@ -48,6 +52,32 @@ export class UserComponent implements OnInit {
     this.userData.getUser(id).subscribe(data => {
       this.user = data;
     });
+  }
+
+  openUserFormModalUpdate(id: number) {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.id = "create-user-btn";
+    dialogConfig.height = "350px";
+    dialogConfig.width = "650px";
+
+    this.userData.getUser(id).subscribe(data => {
+      for (let key in data) {
+        this.firstName = data['firstName'];
+        this.lastName = data['lastName'];
+        this.email = data['email'];
+      }
+    });
+
+    const modalDialog = this.matDialog.open(UserFormComponent, dialogConfig);
+    const instance = modalDialog.componentInstance;
+
+    instance.userUpdateData.firstName = this.firstName;
+    instance.userUpdateData.lastName = this.lastName;
+    instance.userUpdateData.email = this.email;
+
+    modalDialog.afterClosed().subscribe(() => this.loadUsers());
   }
 
 }

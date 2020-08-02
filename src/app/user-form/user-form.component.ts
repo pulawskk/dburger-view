@@ -18,6 +18,12 @@ export class UserFormComponent implements OnInit {
 
   matDialog: MatDialog;
 
+  userUpdateData = {
+    firstName: '',
+    lastName: '',
+    email: ''
+  };
+
   constructor(private formBuilder: FormBuilder, private userService: UserDataService, private dialog: MatDialog) {
     this.messageForm = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -31,6 +37,12 @@ export class UserFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.messageForm = this.formBuilder.group({
+      firstName: [this.userUpdateData.firstName, Validators.required],
+      lastName: [this.userUpdateData.lastName, Validators.required],
+      email: [this.userUpdateData.email, Validators.required]
+    });
   }
 
   onSubmit() {
