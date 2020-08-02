@@ -14,6 +14,7 @@ import { MatButtonModule } from "@angular/material/button";
 import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from "@angular/material/dialog";
 import { UserFormComponent } from './user-form/user-form.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
     HomeComponent,
     NavComponent,
     UserComponent,
-    UserFormComponent
+    UserFormComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
