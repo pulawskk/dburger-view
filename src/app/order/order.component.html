@@ -1,1 +1,32 @@
-<p>order works!</p>
+<h1>Orders</h1>
+
+<table *ngIf="orders">
+  <tr>
+    <th>Id</th>
+    <th>Delivery name</th>
+    <th>User id</th>
+    <th>Details</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+
+  <!--  users.users -> variable users contains users objects-->
+  <tr *ngFor="let order of orders.orders">
+    <td>{{order.id}}</td>
+    <td>{{order.deliveryName}}</td>
+    <td>{{order.userId}}</td>
+    <td>
+      <button mat-raised-button id="details-order-btn" (click)="deleteUser(order.id)">DETAILS</button>
+    </td>
+    <td>
+      <button mat-raised-button id="update-order-btn" (click)="deleteUser(order.id)">UPDATE</button>
+    </td>
+    <td>
+      <button mat-raised-button id="delete-order-btn" (click)="deleteUser(order.id)">DELETE</button>
+    </td>
+  </tr>
+</table>
+
+<!--<div class="container">-->
+<!--  <button mat-raised-button id="create-user-btn" (click)="openUserFormModal()">CREATE USER</button>-->
+<!--</div>-->
