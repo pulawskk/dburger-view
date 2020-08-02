@@ -16,10 +16,10 @@
     <td>{{order.deliveryName}}</td>
     <td>{{order.userId}}</td>
     <td>
-      <button mat-raised-button id="details-order-btn" (click)="deleteUser(order.id)">DETAILS</button>
+      <button mat-raised-button id="details-order-btn" (click)="orderDetail(order.id)">DETAILS</button>
     </td>
     <td>
-      <button mat-raised-button id="update-order-btn" (click)="deleteUser(order.id)">UPDATE</button>
+      <button mat-raised-button id="update-order-btn" routerLink="/orderForm/{{order.id}}">UPDATE</button>
     </td>
     <td>
       <button mat-raised-button id="delete-order-btn" (click)="deleteUser(order.id)">DELETE</button>
@@ -27,6 +27,6 @@
   </tr>
 </table>
 
-<!--<div class="container">-->
-<!--  <button mat-raised-button id="create-user-btn" (click)="openUserFormModal()">CREATE USER</button>-->
-<!--</div>-->
+<div class="container">
+  <button mat-raised-button id="create-user-btn" routerLink="/orderForm">CREATE ORDER</button>
+</div>

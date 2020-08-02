@@ -1,0 +1,48 @@
+<div id="modal-content-wrapper">
+  <header id="modal-header">
+    <h1 id="modal-title">Create new order</h1>
+  </header>
+
+  <section id="modal-body">
+
+    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
+
+      <h5 *ngIf="success" mat-dialog-close routerLink="orders">Your form is valid!</h5>
+
+      <label>
+        <div>
+          Delivery name:
+          <input type="text" formControlName="deliveryName" *ngIf="id == 0" placeholder="{{order.deliveryName}}">
+          <input type="text" formControlName="deliveryName" *ngIf="id > 0" value="{{order.deliveryName}}">
+          <div *ngIf="submitted && orderForm.controls.deliveryName.errors" class="error">
+            <div *ngIf="orderForm.controls.deliveryName.errors.required">Delivery name is required!</div>
+          </div>
+        </div>
+
+        <div>
+          Delivery street:
+          <input type="text" formControlName="deliveryStreet" placeholder="{{order.deliveryStreet}}">
+          <div *ngIf="submitted && orderForm.controls.deliveryStreet.errors" class="error">
+            <div *ngIf="orderForm.controls.deliveryStreet.errors.required">Delivery street is required!</div>
+          </div>
+        </div>
+      </label>
+
+      <input type="submit" value="CREATE ORDER" class="cta" />
+
+      <button mat-dialog-close>CANCEL</button>
+    </form>
+
+    <div *ngIf="submitted" class="results">
+
+      <strong>Delivery name:</strong>
+      <span><pre> {{ orderForm.controls.deliveryName.value }}</pre></span>
+
+      <strong>Delivery street:</strong>
+      <span><pre> {{ orderForm.controls.deliveryStreet.value }}</pre></span>
+
+    </div>
+
+  </section>
+
+</div>
