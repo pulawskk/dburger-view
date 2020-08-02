@@ -12,6 +12,7 @@ import { UserFormComponent } from "../user-form/user-form.component";
 export class UserComponent implements OnInit {
 
   users: Object;
+  user: Object;
 
   constructor(private userData: UserDataService,
               private matDialog: MatDialog) { }
@@ -41,6 +42,12 @@ export class UserComponent implements OnInit {
   deleteUser(id: number) {
     this.userData.deleteUser(id);
     this.loadUsers();
+  }
+
+  updateUser(id: number) {
+    this.userData.getUser(id).subscribe(data => {
+      this.user = data;
+    });
   }
 
 }
