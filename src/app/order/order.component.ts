@@ -11,7 +11,7 @@ import {ActivatedRoute} from "@angular/router";
 export class OrderComponent implements OnInit {
 
   orders: Object;
-  id: number;
+  userId: number;
 
   constructor(private orderData: OrderDataService,
               private userData: UserDataService,
@@ -19,13 +19,13 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.params.subscribe(data => {
-      this.id = data['id'];
-      console.log(this.id);
+      this.userId = data['id'];
+      console.log(this.userId);
     })
 
-    if(this.id > 0) {
-      this.loadOrdersForUserId(this.id);
-    } else if(this.id == null) {
+    if(this.userId > 0) {
+      this.loadOrdersForUserId(this.userId);
+    } else if(this.userId == null) {
       this.loadOrders();
     }
   }

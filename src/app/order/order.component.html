@@ -19,14 +19,14 @@
       <button mat-raised-button id="details-order-btn" (click)="orderDetail(order.id)">DETAILS</button>
     </td>
     <td>
-      <button mat-raised-button id="update-order-btn" routerLink="/orderForm/{{order.id}}">UPDATE</button>
+      <button mat-raised-button id="update-order-btn" routerLink="/orderForm/{{userId}}">UPDATE</button>
     </td>
     <td>
-      <button mat-raised-button id="delete-order-btn" (click)="deleteUser(order.id)">DELETE</button>
+      <button mat-raised-button id="delete-order-btn" (click)="deleteOrder(order.id)">DELETE</button>
     </td>
   </tr>
 </table>
 
-<div class="container" *ngIf="id > 0">
-  <button mat-raised-button id="create-user-btn" routerLink="/orderForm">CREATE ORDER</button>
+<div class="container" *ngIf="userId > 0">
+  <button mat-raised-button id="create-user-btn" routerLink="/orderForm/{{userId}}">CREATE ORDER</button>
 </div>

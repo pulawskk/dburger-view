@@ -32,11 +32,11 @@ export class OrderDataService {
     return this.http.get(this.urlOrders + "/" + id);
   }
 
-  createOrder(form: FormGroup) {
+  createOrder(form: FormGroup, userId: number) {
     this.order.deliveryName = form.controls.deliveryName.value;
     this.order.deliveryStreet = form.controls.deliveryStreet.value;
-    console.log(this.order);
-    this.http.post(this.urlUsers + "/1/orders", this.order).toPromise().then(data => {
+
+    this.http.post(this.urlUsers + "/"+userId+"/orders", this.order).toPromise().then(data => {
       console.log(data);
     });
   }

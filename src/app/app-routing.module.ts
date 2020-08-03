@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'orders/:id', component: OrderComponent},
   {path: 'orders', component: OrderComponent},
   {path: 'orderForm', component: OrderFormComponent},
-  {path: 'orderForm/:id', component: OrderFormComponent}
+  {path: 'orderForm/:userId', component: OrderFormComponent}
 
 ];
 

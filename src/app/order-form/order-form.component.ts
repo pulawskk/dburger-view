@@ -44,18 +44,9 @@ export class OrderFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.params.subscribe(data => {
-      this.userId = data['id'];
+      this.userId = data['userId'];
       this.order.userId = this.userId.toString();
-      console.log(this.userId);
     })
-
-    // if(this.id > 0) {
-    // // update order with data from data base
-    //   this.displayUpdateOrderForm(this.id);
-    // } else {
-    //   this.id = 0;
-    //   this.displayEmptyOrderForm();
-    // }
 
     this.displayEmptyOrderForm();
   }
@@ -67,17 +58,17 @@ export class OrderFormComponent implements OnInit {
       return;
     }
 
-    this.orderService.createOrder(this.orderForm);
+    this.orderService.createOrder(this.orderForm, this.userId);
     this.success = true;
 
   }
 
-  displayUpdateOrderForm(id: number) {
-    this.orderService.getOrderById(id).subscribe(data => {
-      this.order.deliveryName = data['deliveryName'];
-      this.order.deliveryStreet = data['deliveryStreet'];
-    });
-  }
+  // displayUpdateOrderForm(id: number) {
+  //   this.orderService.getOrderById(id).subscribe(data => {
+  //     this.order.deliveryName = data['deliveryName'];
+  //     this.order.deliveryStreet = data['deliveryStreet'];
+  //   });
+  // }
 
   displayEmptyOrderForm() {
 
