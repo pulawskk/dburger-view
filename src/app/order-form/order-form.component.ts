@@ -44,11 +44,16 @@ export class OrderFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.params.subscribe(data => {
+      console.log(data);
       this.userId = data['userId'];
       this.order.userId = this.userId.toString();
     })
 
+    //if user id > 0 and order id == 0 or null
+
     this.displayEmptyOrderForm();
+    //TODO
+    // if user id > 0 and order id > 0 -> displayUpdateOrderForm(order id)
   }
 
   onSubmit() {
@@ -63,12 +68,12 @@ export class OrderFormComponent implements OnInit {
 
   }
 
-  // displayUpdateOrderForm(id: number) {
-  //   this.orderService.getOrderById(id).subscribe(data => {
-  //     this.order.deliveryName = data['deliveryName'];
-  //     this.order.deliveryStreet = data['deliveryStreet'];
-  //   });
-  // }
+  displayUpdateOrderForm(id: number) {
+    this.orderService.getOrderById(id).subscribe(data => {
+      this.order.deliveryName = data['deliveryName'];
+      this.order.deliveryStreet = data['deliveryStreet'];
+    });
+  }
 
   displayEmptyOrderForm() {
 
