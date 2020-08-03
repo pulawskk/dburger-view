@@ -11,9 +11,9 @@ import { OrderDataService } from "../order-data.service";
 })
 export class OrderFormComponent implements OnInit {
 
-  id: number;
+  userId: number;
   order = {
-    id: '',
+    userId: '',
     deliveryName: 'delivery name...',
     deliveryStreet: 'delivery street...'
     // deliveryCity: '',
@@ -44,17 +44,20 @@ export class OrderFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.params.subscribe(data => {
-      this.id = data['id'];
-      console.log(this.id);
+      this.userId = data['id'];
+      this.order.userId = this.userId.toString();
+      console.log(this.userId);
     })
 
-    if(this.id > 0) {
-    // update order with data from data base
-      this.displayUpdateOrderForm(this.id);
-    } else {
-      this.id = 0;
-      this.displayEmptyOrderForm();
-    }
+    // if(this.id > 0) {
+    // // update order with data from data base
+    //   this.displayUpdateOrderForm(this.id);
+    // } else {
+    //   this.id = 0;
+    //   this.displayEmptyOrderForm();
+    // }
+
+    this.displayEmptyOrderForm();
   }
 
   onSubmit() {
@@ -64,18 +67,13 @@ export class OrderFormComponent implements OnInit {
       return;
     }
 
-    if (this.orderForm.valid && this.id > 0) {
-      this.orderService.updateOrder(this.orderForm, this.id);
-      this.success = true;
-    } else if (this.orderForm.valid && this.id == 0) {
-      this.orderService.createOrder(this.orderForm);
-      this.success = true;
-    }
+    this.orderService.createOrder(this.orderForm);
+    this.success = true;
+
   }
 
   displayUpdateOrderForm(id: number) {
     this.orderService.getOrderById(id).subscribe(data => {
-      this.order.id = this.id.toString();
       this.order.deliveryName = data['deliveryName'];
       this.order.deliveryStreet = data['deliveryStreet'];
     });

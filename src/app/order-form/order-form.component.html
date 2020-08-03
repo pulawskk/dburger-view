@@ -12,8 +12,7 @@
       <label>
         <div>
           Delivery name:
-          <input type="text" formControlName="deliveryName" *ngIf="id == 0" placeholder="{{order.deliveryName}}">
-          <input type="text" formControlName="deliveryName" *ngIf="id > 0" value="{{order.deliveryName}}">
+          <input type="text" formControlName="deliveryName" placeholder="{{order.deliveryName}}">
           <div *ngIf="submitted && orderForm.controls.deliveryName.errors" class="error">
             <div *ngIf="orderForm.controls.deliveryName.errors.required">Delivery name is required!</div>
           </div>
