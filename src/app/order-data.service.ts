@@ -12,14 +12,15 @@ export class OrderDataService {
 
   order = {
     id: '',
+    userId: '',
     deliveryName: 'delivery name...',
-    deliveryStreet: 'delivery street...'
-    // deliveryCity: '',
-    // deliveryState: '',
-    // deliveryZip: '',
-    // ccNumber: '',
-    // ccExpiration: '',
-    // ccCVV: ''
+    deliveryStreet: 'delivery street...',
+    deliveryCity: '',
+    deliveryState: '',
+    deliveryZip: '',
+    ccNumber: '',
+    ccExpiration: '',
+    ccCVV: ''
   };
 
   constructor(private http: HttpClient) { }
@@ -35,6 +36,12 @@ export class OrderDataService {
   createOrder(form: FormGroup, userId: number) {
     this.order.deliveryName = form.controls.deliveryName.value;
     this.order.deliveryStreet = form.controls.deliveryStreet.value;
+    this.order.deliveryCity = form.controls.deliveryCity.value;
+    this.order.deliveryState = form.controls.deliveryState.value;
+    this.order.deliveryZip = form.controls.deliveryZip.value;
+    this.order.ccNumber = form.controls.ccNumber.value;
+    this.order.ccExpiration = form.controls.ccExpiration.value;
+    this.order.ccCVV = form.controls.ccCvv.value;
 
     this.http.post(this.urlUsers + "/"+userId+"/orders", this.order).toPromise().then(data => {
       console.log(data);
@@ -42,6 +49,18 @@ export class OrderDataService {
   }
 
   updateOrder(form: FormGroup, id: number) {
-    this.http.patch(this.urlUsers + "/" + id, this.order);
+    this.order.id = id.toString();
+    this.order.deliveryName = form.controls.deliveryName.value;
+    this.order.deliveryStreet = form.controls.deliveryStreet.value;
+    this.order.deliveryCity = form.controls.deliveryCity.value;
+    this.order.deliveryState = form.controls.deliveryState.value;
+    this.order.deliveryZip = form.controls.deliveryZip.value;
+    this.order.ccNumber = form.controls.ccNumber.value;
+    this.order.ccExpiration = form.controls.ccExpiration.value;
+    this.order.ccCVV = form.controls.ccCVV.value;
+
+    this.http.patch(this.urlOrders + "/" + id, this.order).toPromise().then(data => {
+      console.log(data);
+    });
   }
 }
