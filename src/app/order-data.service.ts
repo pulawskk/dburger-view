@@ -63,4 +63,9 @@ export class OrderDataService {
       console.log(data);
     });
   }
+
+  deleteOrder(id: number) {
+    console.log(this.urlOrders + "/" + id);
+    this.http.delete(this.urlOrders + "/" + id).toPromise();
+  }
 }

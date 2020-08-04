@@ -42,4 +42,9 @@ export class OrderComponent implements OnInit {
       this.orders = data;
     });
   }
+
+  async deleteOrder(id: number) {
+    await this.orderData.deleteOrder(id);
+    this.loadOrders();
+  }
 }
