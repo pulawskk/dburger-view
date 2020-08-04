@@ -12,8 +12,11 @@ import { OrderDataService } from "../order-data.service";
 export class OrderFormComponent implements OnInit {
 
   userId: number;
+  orderId: number = 0;
+
+  update: boolean = false;
+
   order = {
-    userId: '',
     deliveryName: 'delivery name...',
     deliveryStreet: 'delivery street...',
     deliveryCity: 'delivery city...',
@@ -44,16 +47,18 @@ export class OrderFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.params.subscribe(data => {
-      console.log(data);
-      this.userId = data['userId'];
-      this.order.userId = this.userId.toString();
+      this.userId = Number(data['userId']);
+      if(data['orderId'] != null) {
+        this.orderId = Number(data['orderId']);
+      }
     })
 
-    //if user id > 0 and order id == 0 or null
-
-    this.displayEmptyOrderForm();
-    //TODO
-    // if user id > 0 and order id > 0 -> displayUpdateOrderForm(order id)
+    if (this.userId > 0 && this.orderId == 0) {
+      this.displayEmptyOrderForm();
+    } else if (this.userId > 0 && this.orderId > 0) {
+      this.update = true;
+      this.displayUpdateOrderForm(this.orderId);
+    }
   }
 
   onSubmit() {
@@ -68,8 +73,19 @@ export class OrderFormComponent implements OnInit {
 
   }
 
-  displayUpdateOrderForm(id: number) {
-    this.orderService.getOrderById(id).subscribe(data => {
+  displayUpdateOrderForm(orderId: number) {
+    this.orderService.getOrderById(orderId).subscribe(data => {
+      this.orderForm = this.formBuilder.group({
+        deliveryName: [data['deliveryName'], Validators.required],
+        deliveryStreet: [data['deliveryStreet'], Validators.required],
+        deliveryCity: [data['deliveryCity'], Validators.required],
+        deliveryState: [data['deliveryState'], Validators.required],
+        deliveryZip: [data['deliveryZip'], Validators.required],
+        ccNumber: [data['ccNumber'], Validators.required],
+        ccExpiration: [data['ccExpiration'], Validators.required],
+        ccCVV: [data['ccCVV'], Validators.required]
+      });
+
       this.order.deliveryName = data['deliveryName'];
       this.order.deliveryStreet = data['deliveryStreet'];
       this.order.deliveryCity = data['deliveryCity'];

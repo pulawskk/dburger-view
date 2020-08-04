@@ -19,7 +19,7 @@
       <button type="button" mat-raised-button id="details-order-btn" routerLink="/orderDetail/{{order.id}}">DETAILS</button>
     </td>
     <td>
-      <button mat-raised-button id="update-order-btn" routerLink="/orderForm/{{userId}}">UPDATE</button>
+      <button mat-raised-button id="update-order-btn" routerLink="/orderForm/{{userId}}/{{order.id}}">UPDATE</button>
     </td>
     <td>
       <button mat-raised-button id="delete-order-btn" (click)="deleteOrder(order.id)">DELETE</button>
