@@ -43,9 +43,9 @@ export class UserComponent implements OnInit {
     modalDialog.afterClosed().subscribe(() => this.ngOnInit());
   }
 
-  deleteUser(id: number) {
-    this.userData.deleteUser(id);
-    this.ngOnInit();
+  async deleteUser(id: number) {
+    await this.userData.deleteUser(id);
+    this.loadUsers();
   }
 
   updateUser(id: number) {

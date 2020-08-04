@@ -42,9 +42,7 @@ export class UserDataService {
   }
 
   deleteUser(id: number) {
-    this.http.delete(this.url + id).subscribe(data => {
-      console.log(data);
-    });
+    this.http.delete(this.url + id).toPromise();
   }
 
   getUser(id: number) {
