@@ -46,7 +46,7 @@ export class UserFormComponent implements OnInit {
     });
   }
 
-  onSubmit() {
+  async onSubmit() {
     this.submitted = true;
 
     if (this.messageForm.invalid) {
@@ -54,13 +54,12 @@ export class UserFormComponent implements OnInit {
     }
 
     if (this.messageForm.valid && this.userUpdateData.id > 0) {
-      this.userService.updateUser(this.messageForm, this.userUpdateData.id);
-      this.success = true;
+      await this.userService.updateUser(this.messageForm, this.userUpdateData.id);
       this.matDialog.closeAll();
     } else if (this.messageForm.valid && this.userUpdateData.id == 0) {
-      this.userService.createUser(this.messageForm);
-      this.success = true;
+      await this.userService.createUser(this.messageForm);
       this.matDialog.closeAll();
     }
+    this.success = true;
   }
 }

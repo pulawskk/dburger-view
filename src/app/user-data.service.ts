@@ -36,9 +36,7 @@ export class UserDataService {
     this.postData.lastName = messageForm.controls.lastName.value;;
     this.postData.email = messageForm.controls.email.value;;
 
-    this.http.post(this.url, this.postData).toPromise().then(data => {
-      console.log(data);
-    });
+    this.http.post(this.url, this.postData).toPromise();
   }
 
   deleteUser(id: number) {
@@ -55,9 +53,7 @@ export class UserDataService {
     this.updateData.lastName = messageForm.controls.lastName.value;
     this.updateData.email = messageForm.controls.email.value;
 
-    this.http.patch(this.url + id, this.updateData).toPromise().then(data => {
-      console.log(data);
-    });
+    this.http.patch(this.url + id, this.updateData).toPromise();
   }
 
   getOrdersForUserId(id: number) {
