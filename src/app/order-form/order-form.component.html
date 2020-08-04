@@ -7,7 +7,7 @@
 
     <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
 
-      <h5 *ngIf="success" mat-dialog-close routerLink="orders">Your form is valid!</h5>
+      <h5 *ngIf="success">Your form is valid!</h5>
 
       <label>
         <div>
@@ -25,6 +25,55 @@
             <div *ngIf="orderForm.controls.deliveryStreet.errors.required">Delivery street is required!</div>
           </div>
         </div>
+
+        <div>
+          Delivery city:
+          <input type="text" formControlName="deliveryCity" placeholder="{{order.deliveryCity}}">
+          <div *ngIf="submitted && orderForm.controls.deliveryCity.errors" class="error">
+            <div *ngIf="orderForm.controls.deliveryCity.errors.required">Delivery city is required!</div>
+          </div>
+        </div>
+
+        <div>
+          Delivery state:
+          <input type="text" formControlName="deliveryState" placeholder="{{order.deliveryState}}">
+          <div *ngIf="submitted && orderForm.controls.deliveryState.errors" class="error">
+            <div *ngIf="orderForm.controls.deliveryState.errors.required">Delivery state is required!</div>
+          </div>
+        </div>
+
+        <div>
+          Delivery ZIP:
+          <input type="text" formControlName="deliveryZip" placeholder="{{order.deliveryZip}}">
+          <div *ngIf="submitted && orderForm.controls.deliveryZip.errors" class="error">
+            <div *ngIf="orderForm.controls.deliveryZip.errors.required">Delivery ZIP is required!</div>
+          </div>
+        </div>
+
+        <div>
+          Credit card number:
+          <input type="text" formControlName="ccNumber" placeholder="{{order.ccNumber}}">
+          <div *ngIf="submitted && orderForm.controls.ccNumber.errors" class="error">
+            <div *ngIf="orderForm.controls.ccNumber.errors.required">Credit card number is required!</div>
+          </div>
+        </div>
+
+        <div>
+          Credit card expiration:
+          <input type="text" formControlName="ccExpiration" placeholder="{{order.ccExpiration}}">
+          <div *ngIf="submitted && orderForm.controls.ccExpiration.errors" class="error">
+            <div *ngIf="orderForm.controls.ccExpiration.errors.required">Credit card expiration is required!</div>
+          </div>
+        </div>
+
+        <div>
+          Credit card CVV:
+          <input type="text" formControlName="ccCVV" placeholder="{{order.ccCVV}}">
+          <div *ngIf="submitted && orderForm.controls.ccCVV.errors" class="error">
+            <div *ngIf="orderForm.controls.ccCVV.errors.required">Credit card CVV is required!</div>
+          </div>
+        </div>
+
       </label>
 
       <input type="submit" value="CREATE ORDER" class="cta" />
@@ -39,6 +88,24 @@
 
       <strong>Delivery street:</strong>
       <span><pre> {{ orderForm.controls.deliveryStreet.value }}</pre></span>
+
+      <strong>Delivery city:</strong>
+      <span><pre> {{ orderForm.controls.deliveryCity.value }}</pre></span>
+
+      <strong>Delivery state:</strong>
+      <span><pre> {{ orderForm.controls.deliveryState.value }}</pre></span>
+
+      <strong>Delivery ZIP:</strong>
+      <span><pre> {{ orderForm.controls.deliveryZip.value }}</pre></span>
+
+      <strong>Credit card number:</strong>
+      <span><pre> {{ orderForm.controls.ccNumber.value }}</pre></span>
+
+      <strong>Credit card expiration:</strong>
+      <span><pre> {{ orderForm.controls.ccExpiration.value }}</pre></span>
+
+      <strong>Credit card CVV:</strong>
+      <span><pre> {{ orderForm.controls.ccCVV.value }}</pre></span>
 
     </div>
 
