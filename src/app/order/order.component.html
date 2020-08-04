@@ -16,7 +16,7 @@
     <td>{{order.deliveryName}}</td>
     <td>{{order.userId}}</td>
     <td>
-      <button mat-raised-button id="details-order-btn" (click)="orderDetail(order.id)">DETAILS</button>
+      <button type="button" mat-raised-button id="details-order-btn" routerLink="/orderDetail/{{order.id}}">DETAILS</button>
     </td>
     <td>
       <button mat-raised-button id="update-order-btn" routerLink="/orderForm/{{userId}}">UPDATE</button>

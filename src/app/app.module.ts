@@ -16,6 +16,7 @@ import { UserFormComponent } from './user-form/user-form.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import { OrderComponent } from './order/order.component';
 import { OrderFormComponent } from './order-form/order-form.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { OrderFormComponent } from './order-form/order-form.component';
     UserComponent,
     UserFormComponent,
     OrderComponent,
-    OrderFormComponent
+    OrderFormComponent,
+    OrderDetailComponent
   ],
   imports: [
     BrowserModule,

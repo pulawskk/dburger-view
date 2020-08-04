@@ -1,0 +1,57 @@
+<h1>Order detail</h1>
+
+<div *ngIf="orderId < 0">There is no order like that!</div>
+
+<table *ngIf="orderId > 0">
+
+  <tr>
+    <td>Id</td>
+    <td>{{order.id}}</td>
+  </tr>
+
+  <tr>
+    <td>User id</td>
+    <td>{{order.userId}}</td>
+  </tr>
+
+  <tr>
+    <td>Delivery name</td>
+    <td>{{order.deliveryName}}</td>
+  </tr>
+
+  <tr>
+    <td>Delivery street</td>
+    <td>{{order.deliveryStreet}}</td>
+  </tr>
+
+  <tr>
+    <td>Delivery city</td>
+    <td>{{order.deliveryCity}}</td>
+  </tr>
+
+  <tr>
+    <td>Delivery state</td>
+    <td>{{order.deliveryState}}</td>
+  </tr>
+
+  <tr>
+    <td>Delivery ZIP</td>
+    <td>{{order.deliveryZip}}</td>
+  </tr>
+
+  <tr>
+    <td>Card number</td>
+    <td>{{order.ccNumber}}</td>
+  </tr>
+
+  <tr>
+    <td>Card expiration</td>
+    <td>{{order.ccExpiration}}</td>
+  </tr>
+
+  <tr>
+    <td>Card CVV</td>
+    <td>{{order.ccCVV}}</td>
+  </tr>
+
+</table>
