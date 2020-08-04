@@ -68,7 +68,11 @@ export class OrderFormComponent implements OnInit {
       return;
     }
 
-    this.orderService.createOrder(this.orderForm, this.userId);
+    if(this.update) {
+      this.orderService.updateOrder(this.orderForm, this.userId);
+    } else {
+      this.orderService.createOrder(this.orderForm, this.userId);
+    }
     this.success = true;
 
   }

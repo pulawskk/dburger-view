@@ -75,7 +75,8 @@
 
       </label>
 
-      <input type="submit" value="CREATE ORDER" class="cta" />
+      <input *ngIf="!update" type="submit" value="CREATE ORDER" class="cta" />
+      <input *ngIf="update" type="submit" value="UPDATE ORDER" class="cta" />
 
       <button>CANCEL</button>
     </form>

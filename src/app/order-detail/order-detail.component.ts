@@ -42,7 +42,7 @@ export class OrderDetailComponent implements OnInit {
         this.order.deliveryStreet = data['deliveryStreet'];
         this.order.deliveryCity = data['deliveryCity'];
         this.order.deliveryState = data['deliveryState'];
-        this.order.deliveryZip = data['deliveryZip'];
+        this.order.deliveryZip = data['deliveryZIP'];
         this.order.ccNumber = data['ccNumber'];
         this.order.ccExpiration = data['ccExpiration'];
         this.order.ccCVV = data['ccCVV'];
