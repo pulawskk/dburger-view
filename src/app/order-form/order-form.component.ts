@@ -84,4 +84,8 @@ export class OrderFormComponent implements OnInit {
   displayEmptyOrderForm() {
 
   }
+
+  reloadPage() {
+    window.location.reload();
+  }
 }

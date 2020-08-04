@@ -5,9 +5,7 @@
 
   <section id="modal-body">
 
-    <form [formGroup]="orderForm" (ngSubmit)="onSubmit()">
-
-      <h5 *ngIf="success">Your form is valid!</h5>
+    <form  *ngIf="!success" [formGroup]="orderForm" (ngSubmit)="onSubmit()">
 
       <label>
         <div>
@@ -78,10 +76,10 @@
 
       <input type="submit" value="CREATE ORDER" class="cta" />
 
-      <button mat-dialog-close>CANCEL</button>
+      <button>CANCEL</button>
     </form>
 
-    <div *ngIf="submitted" class="results">
+    <div *ngIf="submitted && !success" class="results">
 
       <strong>Delivery name:</strong>
       <span><pre> {{ orderForm.controls.deliveryName.value }}</pre></span>
@@ -107,6 +105,18 @@
       <strong>Credit card CVV:</strong>
       <span><pre> {{ orderForm.controls.ccCVV.value }}</pre></span>
 
+    </div>
+
+    <div *ngIf="success">
+      <h5>
+        Your form is valid!
+      </h5>
+      <td>
+        <button mat-raised-button id="new-order-btn" (click)="reloadPage()">NEW ORDER</button>
+      </td>
+      <td>
+        <button mat-raised-button id="back-order-btn" routerLink="/orders/{{userId}}">BACK TO ORDERS</button>
+      </td>
     </div>
 
   </section>
