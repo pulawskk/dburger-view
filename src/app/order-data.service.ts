@@ -41,7 +41,7 @@ export class OrderDataService {
     this.order.deliveryZip = form.controls.deliveryZip.value;
     this.order.ccNumber = form.controls.ccNumber.value;
     this.order.ccExpiration = form.controls.ccExpiration.value;
-    this.order.ccCVV = form.controls.ccCvv.value;
+    this.order.ccCVV = form.controls.ccCVV.value;
 
     this.http.post(this.urlUsers + "/"+userId+"/orders", this.order).toPromise().then(data => {
       console.log(data);

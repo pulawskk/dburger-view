@@ -70,6 +70,7 @@ export class OrderFormComponent implements OnInit {
 
     if(this.update) {
       this.orderService.updateOrder(this.orderForm, this.userId);
+      this.update = false;
     } else {
       this.orderService.createOrder(this.orderForm, this.userId);
     }
