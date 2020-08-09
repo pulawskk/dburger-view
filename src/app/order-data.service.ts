@@ -13,6 +13,7 @@ export class OrderDataService {
   order = {
     id: '',
     userId: '',
+    burger_id: '',
     deliveryName: 'delivery name...',
     deliveryStreet: 'delivery street...',
     deliveryCity: '',
@@ -42,6 +43,8 @@ export class OrderDataService {
     this.order.ccNumber = form.controls.ccNumber.value;
     this.order.ccExpiration = form.controls.ccExpiration.value;
     this.order.ccCVV = form.controls.ccCVV.value;
+    console.dir("from controls -> " + form.controls.burgerChoice.value.toString());
+    this.order.burger_id = form.controls.burgerChoice.value.toString();
 
     this.http.post(this.urlUsers + "/"+userId+"/orders", this.order).toPromise().then(data => {
       console.log(data);

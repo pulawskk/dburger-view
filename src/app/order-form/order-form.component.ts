@@ -15,8 +15,6 @@ export class OrderFormComponent implements OnInit {
   userId: number;
   orderId: number = 0;
 
-  burgerId: number = 0;
-
   burgers: Object;
 
   update: boolean = false;
@@ -78,6 +76,7 @@ export class OrderFormComponent implements OnInit {
       this.orderService.updateOrder(this.orderForm, this.userId);
       this.update = false;
     } else {
+      console.dir(this.orderForm);
       this.orderService.createOrder(this.orderForm, this.userId);
     }
     this.success = true;
