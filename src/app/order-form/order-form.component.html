@@ -7,6 +7,23 @@
 
     <form  *ngIf="!success" [formGroup]="orderForm" (ngSubmit)="onSubmit()">
 
+      <table *ngIf="burgers">
+        <tr>
+          <th>Burger id</th>
+          <th>Burger name</th>
+          <th>Price</th>
+          <th>Select yours</th>
+        </tr>
+
+        <!--  users.users -> variable users contains users objects-->
+        <tr *ngFor="let burger of burgers.burgers">
+          <td>{{burger.id}}</td>
+          <td>{{burger.name}}</td>
+          <td>{{burger.price}}</td>
+          <td><input type="radio" name="burgerChoice"/></td>
+        </tr>
+      </table>
+
       <label>
         <div>
           Delivery name:

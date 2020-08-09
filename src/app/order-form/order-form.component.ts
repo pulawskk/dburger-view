@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {UserDataService} from "../user-data.service";
 import {ActivatedRoute} from "@angular/router";
 import { OrderDataService } from "../order-data.service";
+import { BurgerDataService } from "../burger-data.service";
 
 @Component({
   selector: 'app-order-form',
@@ -13,6 +14,10 @@ export class OrderFormComponent implements OnInit {
 
   userId: number;
   orderId: number = 0;
+
+  burgerId: number = 0;
+
+  burgers: Object;
 
   update: boolean = false;
 
@@ -32,8 +37,9 @@ export class OrderFormComponent implements OnInit {
   success: boolean = false;
 
   constructor(private formBuilder: FormBuilder, private userService: UserDataService, private router: ActivatedRoute,
-              private orderService: OrderDataService) {
+              private orderService: OrderDataService, private burgerService: BurgerDataService) {
     this.orderForm = this.formBuilder.group({
+      burgerChoice: [''],
       deliveryName: ['', Validators.required],
       deliveryStreet: ['', Validators.required],
       deliveryCity: ['', Validators.required],
@@ -103,7 +109,10 @@ export class OrderFormComponent implements OnInit {
   }
 
   displayEmptyOrderForm() {
-
+    this.burgerService.getBurgers().subscribe(data => {
+      this.burgers = data;
+      console.log(this.burgers);
+    });
   }
 
   reloadPage() {
